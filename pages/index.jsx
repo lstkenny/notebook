@@ -1,8 +1,10 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
+import Head from "next/head"
+import Link from "next/link"
+import { useRouter } from "next/router"
+import styles from "../styles/Home.module.css"
 
 export default function Home() {
+  const router = useRouter()
   return (
     <>
       <Head>
@@ -12,28 +14,49 @@ export default function Home() {
       </Head>
 
       <main className={styles.container}>
-        <section className={styles.void}>
+        <section className={`${styles.void} ${styles.section_left}`}>
         </section>
-        <section className={styles.cover}>
+        <section className={`${styles.cover} ${styles.section_right}`}>
           <h1 className={styles.title}>
-            {"  "}Field notes<sup>®</sup>
+            genius
+            <br />
+            notes
+            <span></span>
           </h1>
           <div className={styles.description}>
-            <p>Set of three pitch black</p>
-            <form className={styles.login_form}>
-              <div className={styles.form_control}>
-                <label>owner:</label>
-                <input />
+            <form>
+              <h2 className={styles.text_center}>
+                Sign in with an email
+              </h2>
+              <div className={styles.login_form}>
+                <div className={styles.form_control}>
+                  <label>owner:</label>
+                  <input />
+                </div>
+                <div className={styles.form_control}>/</div>
+                <div className={styles.form_control}>
+                  <label>password:</label>
+                  <input type="password" />
+                </div>
+                <div className={`${styles.form_control} ${styles.text_center}`}>
+                  <button>Sign&nbsp;in</button>
+                </div>
               </div>
-              <div className={styles.form_control}>/</div>
-              <div className={styles.form_control}>
-                <label>password:</label>
-                <input type="password" />
+              <div className={styles.form_links}>
+                <Link href="#">
+                  <a>Sign up</a>
+                </Link>
+                <Link href="#">
+                  <a>Forgot password</a>
+                </Link>
+              </div>
+              <hr className={styles.or} />
+              <div className={`${styles.form_control} ${styles.text_center}`}>
+                <button type="button" onClick={() => router.push("/page")}>
+                  <span className={styles.google_button}></span> Sign in with Google
+                </button>
               </div>
             </form>
-            <p>48-page memo book</p>
-            <hr />
-            <p>Proudly printed and manufactured in USA</p>
           </div>
         </section>
       </main>
